@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+scikit-learn
+pandas
+numpy
+requests
+joblib
+tldextract
+pydantic
+pytest
+ruff
+pytest-watch
+watchdog
