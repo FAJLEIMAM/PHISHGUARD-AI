@@ -5,8 +5,16 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 
 from backend.api.routes import router
+from pathlib import Path
 
 app = FastAPI(title="PhishGuard AI X")
+# Serve static files
+app.mount("/static", StaticFiles(directory="frontend"), name="static")
+
+# Serve index.html at root
+@app.get("/")
+async def serve_frontend():
+    return FileResponse(Path("frontend/index.html"))
 
 # Enable CORS
 app.add_middleware(
