@@ -11,7 +11,7 @@ const riskMeter = document.getElementById('riskMeter');
 const riskScoreDisplay = document.getElementById('riskScore');
 const riskLabel = document.getElementById('riskLabel');
 
-const API_BASE = "http://localhost:8000";
+const API_BASE = window.location.origin;
 
 // --- SPA ROUTING LOGIC ---
 document.querySelectorAll('.nav-item').forEach(item => {
