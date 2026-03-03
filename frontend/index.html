@@ -5,21 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PhishGuard AI | Futuristic Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+
+    <!-- UPDATED FOR RENDER -->
+    <link rel="stylesheet" href="/static/style.css">
+
     <link
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono&display=swap"
         rel="stylesheet">
-    <!-- Ionicons for Icons -->
+
+    <!-- Ionicons -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <!-- jsQR for Client-side QR Decoding -->
+
+    <!-- jsQR -->
     <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
-    <div class="background-overlay"></div>
+     <div class="background-overlay"></div>
     <div class="scanlines"></div>
     <canvas id="simulationCanvas" class="simulation-canvas"></canvas>
 
@@ -633,7 +639,7 @@
         </main>
     </div>
 
-    <script src="script.js"></script>
-</body>
+    <script src="/static/script.js"></script>
 
+</body>
 </html>
