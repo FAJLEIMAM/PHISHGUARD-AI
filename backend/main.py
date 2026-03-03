@@ -1,6 +1,4 @@
 import os
-import sys
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -19,13 +17,18 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include API routes
 app.include_router(router)
 
-# Serve static files (CSS, JS)
-app.mount("/static", StaticFiles(directory="."), name="static")
+# Get project root
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Serve frontend at root
+# Path to frontend folder
+FRONTEND_DIR = os.path.join(BASE_DIR, "frontend")
+
+# Serve static files from frontend folder
+app.mount("/static", StaticFiles(directory=FRONTEND_DIR), name="static")
+
+# Serve index.html
 @app.get("/")
 def serve_frontend():
-    return FileResponse("index.html")
+    return FileResponse(os.path.join(FRONTEND_DIR, "index.html"))
