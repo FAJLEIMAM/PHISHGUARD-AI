@@ -1,18 +1,16 @@
 import os
 import sys
 
-# Add project root to sys.path if running as script
-if __name__ == "__main__":
-    sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 
 from backend.api.routes import router
 
 app = FastAPI(title="PhishGuard AI X")
 
-# Enable CORS for frontend
+# Enable CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -21,9 +19,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Include API routes
 app.include_router(router)
 
-if __name__ == "__main__":
-    import uvicorn
+# Serve static files (CSS, JS)
+app.mount("/static", StaticFiles(directory="."), name="static")
 
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+# Serve frontend at root
+@app.get("/")
+def serve_frontend():
+    return FileResponse("index.html")
